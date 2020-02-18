@@ -8,11 +8,11 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/idLoginEmail"
+        android:id="@+id/idLoginCPF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="Email"
+        android:hint="Cpf"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textSize="30dp" />
