@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -72,4 +75,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+    public List<Usuarios> listarTodosClientes() {
+
+        List<Usuarios> listarClientes = new ArrayList<Usuarios>();
+
+        String query = "SELECT * FROM " + tbUsuario;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Usuarios usuarios = new Usuarios();
+                usuarios.setCodigo(Integer.parseInt(cursor.getString(0)));
+                usuarios.setNome(cursor.getString(1));
+                usuarios.setEmail(cursor.getString(3));
+
+                listarClientes.add(usuarios);
+
+            } while (cursor.moveToNext());
+        }
+
+
+        return listarClientes;
+    }
+
 }
+
